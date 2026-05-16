@@ -1,0 +1,23 @@
+{
+  "name": "fl-tecnologia-enterprise-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "framer-motion": "file:vendor/framer-motion",
+    "lucide-react": "file:vendor/lucide-react",
+    "next": "file:vendor/next",
+    "react": "file:vendor/react",
+    "react-dom": "file:vendor/react-dom"
+  },
+  "devDependencies": {
+    "autoprefixer": "file:vendor/autoprefixer",
+    "postcss": "file:vendor/postcss",
+    "tailwindcss": "file:vendor/tailwindcss"
+  }
+}
