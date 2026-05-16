@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { createServer } from "node:http";
 import { join } from "node:path";
 
 const command = process.argv[2] || "help";
 const root = process.cwd();
+const port = Number(process.env.PORT || 3000);
 
 function assertFile(path) {
   if (!existsSync(join(root, path))) {
@@ -59,9 +61,24 @@ if (command === "lint") {
 }
 
 if (command === "dev" || command === "start") {
-  console.log(`Next.js local runtime placeholder: '${command}' is available after installing the production Next.js package from npm.`);
-  console.log("This repository is dependency-offline safe for CI build validation.");
-  process.exit(0);
+  assertFile("preview.html");
+  const server = createServer((request, response) => {
+    if (request.url === "/health") {
+      response.writeHead(200, { "content-type": "application/json" });
+      response.end(JSON.stringify({ ok: true, app: "FL TECNOLOGIA local preview" }));
+      return;
+    }
+
+    response.writeHead(200, { "content-type": "text/html; charset=utf-8" });
+    response.end(readFileSync(join(root, "preview.html"), "utf8"));
+  });
+
+  server.listen(port, "0.0.0.0", () => {
+    console.log(`▲ Next.js 15.3.2-local`);
+    console.log(`✓ FL TECNOLOGIA preview ready on http://localhost:${port}`);
+    console.log("✓ Serving preview.html for local visual review");
+  });
+} else {
+  console.log("Usage: next build | dev | start | lint");
 }
 
-console.log("Usage: next build | dev | start");
