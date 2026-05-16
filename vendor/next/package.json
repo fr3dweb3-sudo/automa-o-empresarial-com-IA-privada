@@ -1,0 +1,11 @@
+{
+  "name": "next",
+  "version": "15.3.2-local",
+  "type": "module",
+  "bin": { "next": "./bin/next.js" },
+  "exports": {
+    ".": "./index.js",
+    "./image": "./image.js",
+    "./font/google": "./font/google.js"
+  }
+}

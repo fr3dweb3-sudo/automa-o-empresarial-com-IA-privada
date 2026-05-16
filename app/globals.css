@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b0f14;
+  --foreground: #f8fbff;
+  --electric: #2f8cff;
+  --neon: #54ffbf;
+  --muted: #8ba0b7;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--background); }
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 15% 12%, rgba(47, 140, 255, 0.16), transparent 28rem),
+    radial-gradient(circle at 86% 18%, rgba(84, 255, 191, 0.08), transparent 26rem),
+    linear-gradient(180deg, #0b0f14 0%, #080b10 48%, #0b0f14 100%);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+::selection { background: rgba(84, 255, 191, 0.32); color: white; }
+
+.font-display { font-family: var(--font-space), var(--font-inter), system-ui, sans-serif; }
+
+.glass {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.035));
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.grid-mask {
+  background-image:
+    linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+}
+
+.text-gradient {
+  background: linear-gradient(92deg, #ffffff 0%, #cfe7ff 45%, #54ffbf 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.blue-glow { box-shadow: 0 0 0 1px rgba(47,140,255,.32), 0 18px 80px rgba(47,140,255,.18); }
+.neon-glow { box-shadow: 0 0 0 1px rgba(84,255,191,.25), 0 18px 80px rgba(84,255,191,.10); }
+
+.benchmark-bar { transform-origin: left; animation: grow 1.8s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes grow { from { transform: scaleX(.12); opacity: .3; } to { transform: scaleX(1); opacity: 1; } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+@keyframes pulseLine { 0%,100% { opacity: .35; transform: scaleY(.76); } 50% { opacity: 1; transform: scaleY(1); } }
+@keyframes drift { from { transform: translate3d(0,0,0); } to { transform: translate3d(-48px,-48px,0); } }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-drift { animation: drift 16s linear infinite; }
+
+input, textarea, select { color-scheme: dark; }
