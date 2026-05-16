@@ -1,0 +1,1 @@
+{ "name": "framer-motion", "version": "12.12.1-local", "type": "module", "main": "./index.js", "exports": { ".": "./index.js" } }
